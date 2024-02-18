@@ -31,151 +31,6 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 import * as GUI from "lil-gui";
 
-let zzfx, zzfxV, zzfxX;
-
-// ZzFXMicro - Zuper Zmall Zound Zynth - v1.2.1 by Frank Force ~ 880 bytes
-zzfxV = 0.3; // volume
-zzfx = // play sound
-  (
-    p = 1,
-    k = 0.05,
-    b = 220,
-    e = 0,
-    r = 0,
-    t = 0.1,
-    q = 0,
-    D = 1,
-    u = 0,
-    y = 0,
-    v = 0,
-    z = 0,
-    l = 0,
-    E = 0,
-    A = 0,
-    F = 0,
-    c = 0,
-    w = 1,
-    m = 0,
-    B = 0,
-    M = Math,
-    R = 44100,
-    d = 2 * M.PI,
-    G = (u *= (500 * d) / R / R),
-    C = (b *= ((1 - k + 2 * k * M.random((k = []))) * d) / R),
-    g = 0,
-    H = 0,
-    a = 0,
-    n = 1,
-    I = 0,
-    J = 0,
-    f = 0,
-    x,
-    h
-  ) => {
-    e = R * e + 9;
-    m *= R;
-    r *= R;
-    t *= R;
-    c *= R;
-    y *= (500 * d) / R ** 3;
-    A *= d / R;
-    v *= d / R;
-    z *= R;
-    l = (R * l) | 0;
-    for (h = (e + m + r + t + c) | 0; a < h; k[a++] = f)
-      ++J % ((100 * F) | 0) ||
-        ((f = q
-          ? 1 < q
-            ? 2 < q
-              ? 3 < q
-                ? M.sin((g % d) ** 3)
-                : M.max(M.min(M.tan(g), 1), -1)
-              : 1 - (((((2 * g) / d) % 2) + 2) % 2)
-            : 1 - 4 * M.abs(M.round(g / d) - g / d)
-          : M.sin(g)),
-        (f =
-          (l ? 1 - B + B * M.sin((d * a) / l) : 1) *
-          (0 < f ? 1 : -1) *
-          M.abs(f) ** D *
-          zzfxV *
-          p *
-          (a < e
-            ? a / e
-            : a < e + m
-            ? 1 - ((a - e) / m) * (1 - w)
-            : a < e + m + r
-            ? w
-            : a < h - c
-            ? ((h - a - c) / t) * w
-            : 0)),
-        (f = c
-          ? f / 2 +
-            (c > a ? 0 : ((a < h - c ? 1 : (h - a) / c) * k[(a - c) | 0]) / 2)
-          : f)),
-        (x = (b += u += y) * M.cos(A * H++)),
-        (g += x - x * E * (1 - ((1e9 * (M.sin(a) + 1)) % 2))),
-        n && ++n > z && ((b += v), (C += v), (n = 0)),
-        !l || ++I % l || ((b = C), (u = G), (n = n || 1));
-    p = zzfxX.createBuffer(1, h, R);
-    p.getChannelData(0).set(k);
-    b = zzfxX.createBufferSource();
-    b.buffer = p;
-    b.connect(zzfxX.destination);
-    b.start();
-    return b;
-  };
-zzfxX = new AudioContext();
-
-const son_buy = () =>
-  zzfx(
-    ...[
-      ,
-      ,
-      493,
-      0.01,
-      0.18,
-      0.3,
-      2,
-      1.85,
-      ,
-      -2.7,
-      228,
-      0.02,
-      0.01,
-      ,
-      ,
-      ,
-      ,
-      0.91,
-      0.28,
-    ]
-  );
-
-const son_collide = () =>
-  zzfx(
-    ...[
-      ,
-      ,
-      1371,
-      0.04,
-      0.01,
-      0.01,
-      1,
-      1.84,
-      -43,
-      ,
-      148,
-      0.04,
-      ,
-      ,
-      79,
-      ,
-      ,
-      0.52,
-      0.03,
-    ]
-  );
-
 let scene, camera, renderer;
 
 let raycaster = new Raycaster();
@@ -243,9 +98,6 @@ let uiData = {
 let isJumping = false;
 let jumpSpeed = 0.05;
 let gravity = -0.005;
-
-let vx = (Math.random() - 0.5) / 10;
-let vy = (Math.random() - 0.5) / 10;
 
 const Objects = new Map();
 const Orbits = new Map();
@@ -366,6 +218,7 @@ const animation = () => {
     }
   }
 
+  // Fais bouger les chats
   for (let object of Objects.get("circle1")) {
     let nextX = object.object.position.x + object.vx;
     let nextY = object.object.position.y + object.vy;
@@ -379,6 +232,8 @@ const animation = () => {
       son_collide();
     }
   }
+
+  // Les chats regardent dans la direction de leur mouvement
   for (let object of Objects.get("circle1")) {
     let rotationY = Math.atan2(object.vy, object.vx);
     object.object.rotation.y = rotationY + Math.PI / 2;
@@ -386,6 +241,7 @@ const animation = () => {
     object.object.rotation.z = 0;
   }
 
+  // Nécessaire pour les animations
   for (let i = 0; i < mixers.length; i++) {
     mixers[i].update(delta);
   }
@@ -396,13 +252,6 @@ const animation = () => {
 setInterval(() => {
   for (let object of Objects.get("circle1")) {
     uiData.ARGENT++;
-  }
-}, 1000);
-
-setInterval(() => {
-  for (let object of Objects.get("circle1")) {
-    console.log(object.object.position);
-    console.log(object.object.rotation);
   }
 }, 1000);
 
@@ -422,28 +271,7 @@ function onMouseClick(event) {
     if (intersects[i].object === Objects.get("cube")) {
       isJumping = true;
       uiData.ARGENT++;
-      zzfx(
-        ...[
-          ,
-          ,
-          492,
-          0.01,
-          0.04,
-          0.08,
-          1,
-          0.83,
-          -25,
-          -3.9,
-          ,
-          ,
-          ,
-          0.4,
-          ,
-          ,
-          ,
-          0.94,
-        ]
-      );
+      son_jump();
     }
   }
 }
