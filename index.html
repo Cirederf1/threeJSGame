@@ -19,5 +19,22 @@
     <script src="son.js"></script>
     <script type="module" src="./main.js"></script>
     <div id="gui"></div>
+    <!-- Quest Button -->
+    <button id="questButton">
+      <img src="public/assets/img/quest.png" alt="Quests" />
+    </button>
+
+    <!-- Quest Window -->
+    <div id="questWindow" class="quest-window hidden">
+      <h1>
+        <span style="color: white">Quests</span>
+        <button id="closeButton">
+          <img src="public/assets/img/close.png" alt="Close" />
+        </button>
+      </h1>
+      <ul id="questList">
+        <!-- Quests will be added here dynamically -->
+      </ul>
+    </div>
   </body>
 </html>
