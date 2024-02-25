@@ -51,20 +51,20 @@ let questNames = [
   "Cliquer sur le cube 100 fois",
   "Cliquer sur le cube 1000 fois",
   "Acheter 10 chats",
+  "Acheter 50 chats",
   "Acheter 100 chats",
-  "Acheter 500 chats",
   "Acheter 10 ratons",
+  "Acheter 50 ratons",
   "Acheter 100 ratons",
-  "Acheter 500 ratons",
   "Acheter 10 chiens",
+  "Acheter 50 chiens",
   "Acheter 100 chiens",
-  "Acheter 500 chiens",
   "Acheter 10 chevaux",
+  "Acheter 50 chevaux",
   "Acheter 100 chevaux",
-  "Acheter 500 chevaux",
   "Acheter 10 loups",
+  "Acheter 50 loups",
   "Acheter 100 loups",
-  "Acheter 500 loups",
 ];
 
 //////////////////////// VARIABLES LOCALSTORAGE ////////////////////////
@@ -134,11 +134,11 @@ export let uiData = {
       if (uiData.chat.nombre >= 10) {
         completeQuest("Acheter 10 chats");
       }
+      if (uiData.chat.nombre >= 50) {
+        completeQuest("Acheter 50 chats");
+      }
       if (uiData.chat.nombre >= 100) {
         completeQuest("Acheter 100 chats");
-      }
-      if (uiData.chat.nombre >= 500) {
-        completeQuest("Acheter 500 chats");
       }
     },
   },
@@ -164,11 +164,11 @@ export let uiData = {
       if (uiData.raton.nombre >= 10) {
         completeQuest("Acheter 10 ratons");
       }
+      if (uiData.raton.nombre >= 50) {
+        completeQuest("Acheter 50 ratons");
+      }
       if (uiData.raton.nombre >= 100) {
         completeQuest("Acheter 100 ratons");
-      }
-      if (uiData.raton.nombre >= 500) {
-        completeQuest("Acheter 500 ratons");
       }
     },
   },
@@ -194,11 +194,11 @@ export let uiData = {
       if (uiData.chien.nombre >= 10) {
         completeQuest("Acheter 10 chiens");
       }
+      if (uiData.chien.nombre >= 50) {
+        completeQuest("Acheter 50 chiens");
+      }
       if (uiData.chien.nombre >= 100) {
         completeQuest("Acheter 100 chiens");
-      }
-      if (uiData.chien.nombre >= 500) {
-        completeQuest("Acheter 500 chiens");
       }
     },
   },
@@ -224,11 +224,11 @@ export let uiData = {
       if (uiData.cheval.nombre >= 10) {
         completeQuest("Acheter 10 chevaux");
       }
+      if (uiData.cheval.nombre >= 50) {
+        completeQuest("Acheter 50 chevaux");
+      }
       if (uiData.cheval.nombre >= 100) {
         completeQuest("Acheter 100 chevaux");
-      }
-      if (uiData.cheval.nombre >= 500) {
-        completeQuest("Acheter 500 chevaux");
       }
     },
   },
@@ -247,11 +247,11 @@ export let uiData = {
       if (uiData.loup.nombre >= 10) {
         completeQuest("Acheter 10 loups");
       }
+      if (uiData.loup.nombre >= 50) {
+        completeQuest("Acheter 50 loups");
+      }
       if (uiData.loup.nombre >= 100) {
         completeQuest("Acheter 100 loups");
-      }
-      if (uiData.loup.nombre >= 500) {
-        completeQuest("Acheter 500 loups");
       }
     },
   },
@@ -331,8 +331,8 @@ const init = () => {
   hemiLight.position.set(0, 50, 0);
   scene.add(hemiLight);
 
-  const hemiLightHelper = new HemisphereLightHelper(hemiLight, 10);
-  scene.add(hemiLightHelper);
+  // const hemiLightHelper = new HemisphereLightHelper(hemiLight, 10);
+  // scene.add(hemiLightHelper);
 
   const dirLight = new DirectionalLight(0xffffff, 3);
   dirLight.color.setHSL(0.1, 1, 0.95);
@@ -354,8 +354,8 @@ const init = () => {
 
   dirLight.shadow.camera.far = 350;
 
-  const dirLightHelper = new DirectionalLightHelper(dirLight, 5);
-  scene.add(dirLightHelper);
+  // const dirLightHelper = new DirectionalLightHelper(dirLight, 5);
+  // scene.add(dirLightHelper);
 
   /////////////////////////  CAMERA /////////////////////////////////
   camera = new PerspectiveCamera(100, aspect, 0.1, 100000);
@@ -523,32 +523,32 @@ setInterval(() => {
   uiData.Argent +=
     uiData.chat.nombre *
     (localStorage.getItem("Acheter 10 chats") === "true" ? 2 : 1) *
-    (localStorage.getItem("Acheter 100 chats") === "true" ? 2 : 1) *
-    (localStorage.getItem("Acheter 500 chats") === "true" ? 2 : 1);
+    (localStorage.getItem("Acheter 50 chats") === "true" ? 2 : 1) *
+    (localStorage.getItem("Acheter 100 chats") === "true" ? 2 : 1);
   uiData.Argent +=
     uiData.raton.nombre *
     10 *
     (localStorage.getItem("Acheter 10 ratons") === "true" ? 2 : 1) *
-    (localStorage.getItem("Acheter 100 ratons") === "true" ? 2 : 1) *
-    (localStorage.getItem("Acheter 500 ratons") === "true" ? 2 : 1);
+    (localStorage.getItem("Acheter 50 ratons") === "true" ? 2 : 1) *
+    (localStorage.getItem("Acheter 100 ratons") === "true" ? 2 : 1);
   uiData.Argent +=
     uiData.chien.nombre *
     50 *
     (localStorage.getItem("Acheter 10 chiens") === "true" ? 2 : 1) *
-    (localStorage.getItem("Acheter 100 chiens") === "true" ? 2 : 1) *
-    (localStorage.getItem("Acheter 500 chiens") === "true" ? 2 : 1);
+    (localStorage.getItem("Acheter 50 chiens") === "true" ? 2 : 1) *
+    (localStorage.getItem("Acheter 100 chiens") === "true" ? 2 : 1);
   uiData.Argent +=
     uiData.cheval.nombre *
     250 *
     (localStorage.getItem("Acheter 10 chevaux") === "true" ? 2 : 1) *
-    (localStorage.getItem("Acheter 100 chevaux") === "true" ? 2 : 1) *
-    (localStorage.getItem("Acheter 500 chevaux") === "true" ? 2 : 1);
+    (localStorage.getItem("Acheter 50 chevaux") === "true" ? 2 : 1) *
+    (localStorage.getItem("Acheter 100 chevaux") === "true" ? 2 : 1);
   uiData.Argent +=
     uiData.loup.nombre *
     2000 *
     (localStorage.getItem("Acheter 10 loups") === "true" ? 2 : 1) *
-    (localStorage.getItem("Acheter 100 loups") === "true" ? 2 : 1) *
-    (localStorage.getItem("Acheter 500 loups") === "true" ? 2 : 1);
+    (localStorage.getItem("Acheter 50 loups") === "true" ? 2 : 1) *
+    (localStorage.getItem("Acheter 100 loups") === "true" ? 2 : 1);
   updateLocalStorage();
 }, 1000);
 
@@ -572,13 +572,13 @@ function onMouseClick(event) {
       uiData.Argent +=
         1 *
         (localStorage.getItem("Cliquer sur le cube 10 fois") === "true"
-          ? 2
+          ? 5
           : 1) *
         (localStorage.getItem("Cliquer sur le cube 100 fois") === "true"
-          ? 2
+          ? 10
           : 1) *
         (localStorage.getItem("Cliquer sur le cube 1000 fois") === "true"
-          ? 2
+          ? 100
           : 1);
       clickCount++;
       updateLocalStorage();
@@ -645,10 +645,10 @@ function addAnimals(animalType) {
       });
 
       // Ajouter des axes pour voir la direction des chats  //
-      const axes = new AxesHelper();
-      axes.material.depthTest = false;
-      axes.renderOrder = 1;
-      animal.add(axes);
+      // const axes = new AxesHelper();
+      // axes.material.depthTest = false;
+      // axes.renderOrder = 1;
+      // animal.add(axes);
       //////////////////////////////////////////////////////////
 
       const mixer = new AnimationMixer(animal);
@@ -708,10 +708,10 @@ function createPlanet(color, position, animal) {
   planet.position.set(position.x, position.y, position.z);
   scene.add(planet);
 
-  const axes = new AxesHelper();
-  axes.material.depthTest = false;
-  axes.renderOrder = 1;
-  planet.add(axes);
+  // const axes = new AxesHelper();
+  // axes.material.depthTest = false;
+  // axes.renderOrder = 1;
+  // planet.add(axes);
 
   Orbits.set(animal, planet);
   Objects.set(animal, new Array());
