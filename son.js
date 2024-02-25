@@ -1,7 +1,7 @@
 let zzfx, zzfxV, zzfxX;
 
 // ZzFXMicro - Zuper Zmall Zound Zynth - v1.2.1 by Frank Force ~ 880 bytes
-zzfxV = 0.3; // volume
+zzfxV = 0.005; // volume
 zzfx = // play sound
   (
     p = 1,
@@ -146,4 +146,29 @@ const son_collide = () =>
 const son_jump = () =>
   zzfx(
     ...[, , 492, 0.01, 0.04, 0.08, 1, 0.83, -25, -3.9, , , , 0.4, , , , 0.94]
+  );
+
+const son_planet = () =>
+  zzfx(
+    ...[
+      ,
+      ,
+      471,
+      0.04,
+      0.29,
+      0.43,
+      ,
+      0.34,
+      -0.1,
+      9.7,
+      71,
+      0.02,
+      0.09,
+      0.1,
+      ,
+      ,
+      ,
+      0.69,
+      0.11,
+    ]
   );
