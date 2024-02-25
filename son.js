@@ -93,7 +93,7 @@ zzfx = // play sound
   };
 zzfxX = new AudioContext();
 
-const son_buy = () =>
+export const son_buy = () =>
   zzfx(
     ...[
       ,
@@ -118,7 +118,7 @@ const son_buy = () =>
     ]
   );
 
-const son_collide = () =>
+export const son_collide = () =>
   zzfx(
     ...[
       ,
@@ -143,12 +143,12 @@ const son_collide = () =>
     ]
   );
 
-const son_jump = () =>
+export const son_jump = () =>
   zzfx(
     ...[, , 492, 0.01, 0.04, 0.08, 1, 0.83, -25, -3.9, , , , 0.4, , , , 0.94]
   );
 
-const son_planet = () =>
+export const son_planet = () =>
   zzfx(
     ...[
       ,

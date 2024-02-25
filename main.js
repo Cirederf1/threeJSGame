@@ -35,6 +35,16 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 import * as GUI from "lil-gui";
 
+import { son_collide, son_jump, son_planet } from "./son.js";
+
+import {
+  addCatFolder,
+  addRaccoonFolder,
+  addDogFolder,
+  addHorseFolder,
+  addWolfFolder,
+} from "./folder.js";
+
 //////////////////////// ACHIEVEMENTS ////////////////////////
 let questNames = [
   "Cliquer sur le cube 10 fois",
